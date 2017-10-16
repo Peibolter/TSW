@@ -1,0 +1,33 @@
+body{
+
+		padding-top:150px;
+		background:#fff;
+	}
+
+.login{
+		max-width: 330px;
+		padding: 15px;
+		margin:0 auto;
+	}
+	#sha{
+		max-width: 340px;
+		-webkit-box-shadow: 	0px 0px 18px 0px rgba(48,50,50,0.48);
+		-moz-box-shadow: 	 	0px 0px 18px 0px rgba(48,50,50,0.48);
+		box-shadow: 			0px 0px 18px 0px rgba(48,50,50,0.48);
+		border-radius:6%;
+		background:#fff;
+	}
+	#avatar{
+		width:96px;
+		height:96px;
+		margin:0px auto 10px;
+		display: block;
+		border-radius:50%;
+		margin-left: 110px;
+	}
+.error{
+	color:red;
+}
+.exito{
+	color:green;
+}
