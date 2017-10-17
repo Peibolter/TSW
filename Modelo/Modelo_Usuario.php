@@ -23,7 +23,6 @@ class Usuario_Model
     				echo "error de depuración: " . mysqli_connect_error() . PHP_EOL;
     				exit;
 				}
-				
 			return $mysqli;
 	}
 
@@ -40,6 +39,19 @@ class Usuario_Model
 			return false;
 		}
 	}
+	function comprobarLoginAcceso($user,$pass)
+	{
+		$mysqli=$this->conexionBD();
+		$query="SELECT * FROM `usuario` WHERE  alias='$user' AND password='$pass'";
+		$resultado=$mysqli->query($query);
+		if(mysqli_num_rows($resultado)){
+
+		return true;
+		}else{
+			return false;
+		}
+	}
+
 
 	function crearUsuario($user,$pass,$nombre)
 	{

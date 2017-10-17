@@ -1,3 +1,11 @@
+<?php
+class crearnota{
+
+		function cargar(){
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 		<head>
@@ -15,11 +23,13 @@
 		<header class="header2" >
 			<div class="wrapper">
 				<div class="logo">
-				NotitasCompraSL
+				<a href="../Controlador/ControladorNota.php?Principal" class="thumb pull-left">
+				<img  class="fotocabecera" src="../img/logoDayNote.PNG" alt="" >
+				</a>
 				</div>
 				<nav class="cabecera">
-				<a href="#">Crear Nota</a>
-				<a href="#">Notas</a>
+				<a href="../Controlador/ControladorNota.php?CrearNota">Crear Nota</a>
+				<a href="../Controlador/ControladorNota.php?ListarNota">Notas</a>
 				<a href="#">Salir </a>
 				</nav>
 			</div>
@@ -31,17 +41,18 @@
     			<fieldset >
 
     			<legend align="left">Crear Nota</legend>
+			  			<div class="contenedorcrearnota">
+			    			<p><a>Titulo </a><input class="crear"  type="text" placeholder="Introduzca Titulo" ></p>
 			  		
-			    			Titulo <input  type="text" placeholder="Introduzca Titulo" >
-			  		
-
 						 <textarea maxlength="200" class="form-control" id="exampleTextarea" rows="6" cols="26" placeholder="Escribe tus notas"></textarea>
 						 <br>
 						  <input  type="submit" value="Guardar">
-						  
+						  </div>
     			</fieldset>
     		</section>
     		</body>
 
 		
 	</html>
+
+	<?php  }} ?>

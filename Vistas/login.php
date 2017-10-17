@@ -44,7 +44,7 @@
 		</div>
 		<div class="checkbox">
 		<p class="exito"> <?php if($texto=="UsuarioCreadoconExito") echo "El usuario se ha creado con éxito";?> </p>
-		
+		<p class="errores"> <?php if($texto=="Usuarioincorrecto") echo "Usuario o Contraseña incorrectos"; ?> </p>
 		<input type="submit" class="btn btn-primary" name="login"  value="Entrar"/>
 		<a href="../Controlador/Controlador.php?Registro"><input type="button" class="btn btn-primary" name="Registrarse"  value="Registrarse"/> </a>
 		</form>

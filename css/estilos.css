@@ -45,26 +45,28 @@ header{
 	text-align: center;
 }	
 header .logo{
-	color:#f2f2f2;
-	font-size:18px;	
-	font-family: 'Amatica SC', cursive;
+	position:fixed;
+}
+.fotocabecera{
+	width: 120px;
+	margin-left: 60px;
 }
 .cabecera{
-	line-height:100px;
+	line-height:140px;
 }
 header nav a {
 	display:inline-block;
 	color:#fff;
-	text-decoration: none;
-	
+	text-decoration: none;	
 	line-height: normal;
-	font-size:18px;
+	font-size:20px;
 	transition: all 500ms ease;
 	font-family: 'Amatica SC', cursive;
 	border-bottom: 1px solid #999; 
 	border-left: 1px solid #999; 
 	border-top: 1px solid #999; 
 	border-right: 1px solid #999; 
+
 }
 
 header nav a:hover{
@@ -87,11 +89,11 @@ margin-top:100px;
 }
 .foto2{
 width: 200px;
-	height: 200px;
+height: 200px;
 }
 .foto3{
-	width: 200px;
-	height: 200px;
+width: 200px;
+height: 200px;
 }
 article {
 	font-family: 'Amatica SC', cursive;
@@ -119,15 +121,12 @@ p{
 
 }
 .altaform{
-	width: 250px;
+		display:inline-block;
+		width: 250px;
 		color:#ffffff;
 		font-size:25px;
 		font-family: 'Amatica SC', cursive;
 }
-/*.titulofieldset{
-	top:100px;
-	position: absolute;
-}*/
 
 .a-lista{
 	border-bottom: 1px solid #999; 
@@ -143,13 +142,17 @@ p{
 .material-icons{
 	color:white;
 }
+.contenedorcrearnota{
+	/*width: 150px;*/
+	word-wrap:break-word;
+}
 .container{
 	width: 250px;
 	word-wrap:break-word;
 }
 input{
 	width: 200px;
-	margin: 20px;
+/*	margin: 20px;*/
 	font-family: 'Shadows Into Light', cursive;
 }
 
@@ -159,14 +162,14 @@ fieldset >legend {
 
 }
 textarea{
-	margin-left: 65px;
+	margin-left: 10px;
 	font-family: 'Shadows Into Light', cursive;
 	border: 3px solid #ffffff;
 	border-radius: 10px;
 }
 input[type=submit]{
 	width: 100px;
-	margin-left: 200px;
+	margin-left: 50px;
 	border-radius: 10px;
 }
 .container-pablo{
@@ -189,28 +192,74 @@ input[type=submit]{
 
 
 @media (min-width: 520px) {
+
+header .logo{
+	line-height:150px;
+}
+.cabecera{
+	line-height:100px;
+	position: fixed;
+	top:0px;
+	right: 50px;
+}
+.fotocabecera{
+	width: 170px;
+	margin-left: 40px;
+}
 .altaform{
 
 		width: 300px;
-		padding-left:150px;
 
 }
+.main {
+margin-top:200px;
+}
 .container{
+	width: 250px;
+	word-wrap:break-word;
+	margin-left: 80px;
+}
+.contenedorcrearnota{
 	width: 400px;
 	word-wrap:break-word;
 }
 .form-listarnotas{ 
 	margin-left: 30px
   }
+  textarea{
+
+margin-left: 65px;
+}
+input[type=submit]{
+	margin-left: 200px;
+}
 
 }
 @media (min-width: 700px) {
 .altaform{
 		width: 400px;
-		padding-left:250px;
 }
 .form-listarnotas{
 		width: 400px;	
+}
+header .logo{
+	position:fixed;
+	line-height:150px;
+}
+.fotocabecera{
+	width: 170px;
+	margin-left: 40px;
+}
+.cabecera{
+	line-height:100px;
+	position: fixed;
+	top:0px;
+	right: 50px;
+}
+header nav a {
+	
+	font-size:25px;
+	
 }
 
 }
@@ -229,8 +278,12 @@ header{
 
 /*centro el contenido en un bloque y me sirve tanto par el body como para el header*/
 header .logo{
-	position: fixed;
-	font-size:50px;	
+	position:fixed;
+	line-height:170px;
+}
+.fotocabecera{
+	width: 200px;
+	margin-left: 50px;
 }
 .cabecera{
 	position: fixed;
@@ -287,9 +340,7 @@ article a{
 }
 
 .altaform{
-		width:500px;
 		color:#ffffff;
-		padding-left: 400px;
 		font-size:25px;
 		font-family: 'Amatica SC', cursive;
 }
@@ -328,6 +379,7 @@ input[type=submit]{
 }
 .titulofieldset{
 	position:static;
+
 }
 fieldset >legend {
 	border-radius: 10%;

@@ -1,3 +1,11 @@
+<?php 
+
+class listadoNotas{
+
+		function cargar(){
+
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 		<head>
@@ -17,12 +25,14 @@
 		<header class="header2" >
 			<div class="wrapper">
 				<div class="logo">
-				NotitasCompraSL
+				<a href="../Controlador/ControladorNota.php?Principal" class="thumb pull-left">
+				<img  class="fotocabecera" src="../img/logoDayNote.PNG" alt="" >
+				</a>
 				</div>
 				<nav class="cabecera">
-				<a href="#">Crear Nota</a>
-				<a href="#">Notas</a>
-				<a href="#">Salir </a>
+				<a href="../Controlador/ControladorNota.php?CrearNota">Crear Nota</a>
+				<a href="../Controlador/ControladorNota.php?ListarNota">Notas</a>
+				<a href="../Controlador/ControladorNota.php?Salir">Salir </a>
 				</nav>
 			</div>
 		</header>	
@@ -33,7 +43,7 @@
 			  		
 			  		<div class="container well">
 
-			    		<a class="a-lista">Lista de la Compra </a><a href="#"> <i class="material-icons">delete</i></a> <a href="#"> <i class="material-icons">create</i></a>
+			    		<a class="a-lista" onClick="return confirm('¿Estas Seguro de que deseas eliminar esta nota?);">Lista de la Compra </a><a href="../Controlador/ControladorNota.php?Eliminar"  ><i class="material-icons">delete</i></a> <a href="../Controlador/ControladorNota.php?Modificar" > <i class="material-icons">create</i></a>
 			    		
 			    		<p class="Descripcion">Patatas,cebollas ,melocotones,cacahuetes,albaricoques,mortadela,chorizo,longanizas,almendritas,nocilla,churrasco,nueces,cocacola.</p>
 						</div>
@@ -121,3 +131,8 @@
 				
 		
 	</html>
+
+<?php 
+	}
+}
+	?>
