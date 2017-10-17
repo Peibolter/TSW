@@ -12,14 +12,12 @@ body{
   
 }
 header{
-
 	width:100%;
 	overflow:hidden;
 	position:fixed;
 	background:#252932;
 	height: 100px;
 	top:0;
-	
 }
 .login{
 		max-width: 330px;
@@ -40,36 +38,25 @@ header{
 		display: block;
 		border-radius:50%;
 	}
-
-/*centro el contenido en un bloque y me sirve tanto par el body como para el header*/
-
-
 .wrapper{
 	width: 90%;
 	max-width: 1000px;
 	margin :auto;
-}
-
-
+	text-align: center;
+}	
 header .logo{
 	color:#f2f2f2;
-	font-size:20px;	
-	line-height: 100px; 
-	
+	font-size:18px;	
 	font-family: 'Amatica SC', cursive;
 }
-
 .cabecera{
-	position: fixed;
-	top:0px;
-	right: 0px;
 	line-height:100px;
 }
 header nav a {
 	display:inline-block;
 	color:#fff;
 	text-decoration: none;
-	padding: 2px;
+	
 	line-height: normal;
 	font-size:18px;
 	transition: all 500ms ease;
@@ -88,24 +75,36 @@ header nav a:hover{
 section{
 	text-align: center;
 }
-.main {
-margin-top:200px;
+.listadosection{
+	margin-top: 100px;
 }
-
+.main {
+margin-top:100px;
+}
+.foto{
+	width: 200px;
+	height: 200px;
+}
+.foto2{
+width: 200px;
+	height: 200px;
+}
+.foto3{
+	width: 200px;
+	height: 200px;
+}
 article {
 	font-family: 'Amatica SC', cursive;
-	margin-left:30px;
 	float:left;
-	width: 350px;
+	width: 250px;
 	border-left: 1px solid #999; 
 	border-right: 1px solid #999; 
 	border-bottom:  1px solid #999; 
 	border-top: 1px solid #999; 
-	margin-right: 50px;
 	text-align: center;
+	margin-bottom: 100px;
 }
 article a{
-
 	font-size:18px;
 	color:#ffffff;
 	margin: 20px;
@@ -120,33 +119,32 @@ p{
 
 }
 .altaform{
+	width: 250px;
 		color:#ffffff;
 		font-size:25px;
 		font-family: 'Amatica SC', cursive;
-
-
 }
-.titulofieldset{
+/*.titulofieldset{
 	top:100px;
 	position: absolute;
-}
+}*/
 
 .a-lista{
-
 	border-bottom: 1px solid #999; 
 	padding-left: 20px;
 }
 
 .form-listarnotas{
 		float: left;
-		margin:20px;
-		width: 400px;
 		color:#ffffff;
-		font-size:25px;
+		font-size:20px;
 		font-family: 'Amatica SC', cursive;
 }
+.material-icons{
+	color:white;
+}
 .container{
-	width: 400px;
+	width: 250px;
 	word-wrap:break-word;
 }
 input{
@@ -189,22 +187,36 @@ input[type=submit]{
     text-decoration: none;
 }
 
-@media (min-width: 500px) {
 
+@media (min-width: 520px) {
+.altaform{
 
-article {
-	margin-bottom: 100px;
+		width: 300px;
+		padding-left:150px;
+
 }
+.container{
+	width: 400px;
+	word-wrap:break-word;
+}
+.form-listarnotas{ 
+	margin-left: 30px
+  }
 
 }
-@media (min-width: 768px) {
-
+@media (min-width: 700px) {
+.altaform{
+		width: 400px;
+		padding-left:250px;
+}
+.form-listarnotas{
+		width: 400px;	
+}
 
 }
 @media (min-width: 992px){
 
 header{
-
 	width:100%;
 	overflow:hidden;
 	position:fixed;
@@ -216,23 +228,14 @@ header{
 }
 
 /*centro el contenido en un bloque y me sirve tanto par el body como para el header*/
-.wrapper{
-	width: 90%;
-	max-width: 1000px;
-	margin :auto;
-}
-
-
 header .logo{
-	color:#f2f2f2;
+	position: fixed;
 	font-size:50px;	
-	line-height: 100px; 
-	float:left;
-	font-family: 'Amatica SC', cursive;
 }
-
 .cabecera{
-	float:right;
+	position: fixed;
+	top:0px;
+	right: 50px;
 	line-height:100px;
 }
 header nav a {
@@ -240,10 +243,14 @@ header nav a {
 	color:#fff;
 	text-decoration: none;
 	padding: 10px 10px;
-	line-height: normal;
 	font-size:25px;
+	line-height: normal;
 	transition: all 500ms ease;
 	font-family: 'Amatica SC', cursive;
+	border-bottom: 1px solid #999; 
+	border-left: 1px solid #999; 
+	border-top: 1px solid #999; 
+	border-right: 1px solid #999; 
 }
 
 header nav a:hover{
@@ -252,9 +259,8 @@ header nav a:hover{
 }
 
 section{
-	margin-top:100px;
-	text-align: center;
 	margin-left: 130px;
+	text-align: center;
 }
 .main {
 margin-top:200px;
@@ -271,60 +277,27 @@ article {
 	border-top: 1px solid #999; 
 	margin-right: 50px;
 	text-align: center;
+	margin-bottom: 100px;
 }
 article a{
-
 	font-size:18px;
 	color:#ffffff;
 	margin: 20px;
 
 }
 
-p{
-	font-family: 'Shadows Into Light', cursive;
-	font-size:18px;
-	color:#ffffff;
-	margin: 20px;
-
-}
 .altaform{
 		width:500px;
 		color:#ffffff;
 		padding-left: 400px;
 		font-size:25px;
 		font-family: 'Amatica SC', cursive;
-
-
 }
-.a-lista{
-
-	border-bottom: 1px solid #999; 
-	padding-left: 20px;
+.main {
+margin-top:200px;
 }
 
-.form-listarnotas{
-		float: left;
-		margin:20px;
-		width: 400px;
-		color:#ffffff;
-		font-size:25px;
-		font-family: 'Amatica SC', cursive;
-}
-.container{
-	width: 400px;
-	word-wrap:break-word;
-}
-input{
-	width: 200px;
-	margin: 20px;
-	font-family: 'Shadows Into Light', cursive;
-}
 
-fieldset >legend {
-	border-radius: 10%;
-	font-size:40px;
-
-}
 textarea{
 	margin-left: 65px;
 	font-family: 'Shadows Into Light', cursive;
