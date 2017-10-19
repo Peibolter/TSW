@@ -1,7 +1,6 @@
 <?php
 class modificarNota{
-
-		function cargar(){
+		function cargar($datos,$texto){
 
 
 ?>
@@ -36,19 +35,23 @@ class modificarNota{
 		</header>
 		<section class="main">
 			
-    		<form class="altaform">
+    		<form class="altaform" action="../Controlador/ControladorNota.php?ModificarNota" method="post">
 
     			<fieldset class="titulofieldset" >
-
+    			<?php foreach($datos as $fila)
+			{  ?>
     			<legend align="left">Modificar Nota</legend>
 			  				<div class="contenedorcrearnota">
-			    			<p><a>Titulo</a> <input  type="text" value="Lista de La Compra" readonly ></p>
-
-						 <textarea maxlength="200" class="form-control" id="exampleTextarea" rows="6" cols="26" placeholder="Escribe tus notas">Patatas,cebollas,melocotones,cacahuetes,albaricoques,mortadela,chorizo,longanizas,almendritas,nocilla,churrasco,nueces,cocacola.</textarea>
+			    			<p><a>Titulo</a> <input  type="text"  name="titulo" readonly required value=<?= $fila['nombre'];?> ></p>
+			    			<input type="hidden" name="id" value=<?= $fila['id']; ?> >
+						 <textarea maxlength="200" name="contenido" required class="form-control" id="exampleTextarea" rows="6" cols="26" placeholder="Escribe tus notas"><?= $fila['contenido']; ?></textarea>
 						 <br>
 						  </div>
 						  <input  type="submit" value="Modificar">
+						    <p class="errorinsertado"><?php if($texto=="error")echo"Imposible Modificar nota";?> </p>
+						  <?php  }?>
     			</fieldset>
+    			</form>
     		</section>
     		</body>
 

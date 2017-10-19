@@ -1,5 +1,5 @@
 <?php
-class crearnota{
+class compartirnota{
 
 		function cargar($texto){
 ?>
@@ -38,13 +38,12 @@ class crearnota{
 
     			<fieldset>
 
-    			<legend align="left">Crear Nota</legend>
+    			<legend align="left">Compatir Nota</legend>
 			  			<div class="contenedorcrearnota">
-			    			<p><a>Titulo </a><input class="crear" name="titulo" type="text" placeholder="Introduzca Titulo" required></p>
+							<checkbox>
 			  		
-						 <textarea name="descripcion" required maxlength="200" class="form-control" id="exampleTextarea" rows="6" cols="26" placeholder="Escribe tus notas"></textarea>
-						 <br>
-						  <input  type="submit" value="Guardar">
+						 
+						  <input  type="submit" value="Compatir">
 						  </div>
 						  <p class="errorinsertado"><?php if($texto=="error")echo"Imposible Añadir nota";?> </p>
 						  <!--<p class="exito"><?php //if($texto=="exito")echo"Nota Creada";?> </p>-->

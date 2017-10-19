@@ -1,8 +1,10 @@
 <?php 
 include("..\Modelo\Modelo_Usuario.php");
+include("..\Modelo\Modelo_Notas.php");
 include("..\Vistas\login.php");
 include("..\Vistas\\registrarse.php");
-include("..\Vistas\cabecera.php");
+/*include("..\Vistas\cabecera.php");*/
+include("..\Vistas\listarnotas.php");
 session_start();
           
               if(isset($_REQUEST['Acceso'])=='1'){
@@ -13,14 +15,15 @@ session_start();
 
                     if($resultado==true){
                        $_SESSION['usuario']=$user;
-                       $clasecabecera=new cabecera();
-                       $clasecabecera->cargar();
+                       $modeloNota=new Notas();
+                       $datos=$modeloNota->listarNotas($_SESSION['usuario']);
+                       $claselistadoNotas=new listadoNotas();
+                       $claselistadoNotas->cargar($datos,"");
                      //echo"<script>window.location=\"../Vistas/cabecera.html\"</script>";
                       }else{
                        $clase=new login();//creo la clase login
                        $clase->cargar("Usuarioincorrecto");//lanzo la funcion de la clase cargar();
                       }
-                  
               }
 
               if(isset($_REQUEST['Registro'])){
@@ -29,7 +32,6 @@ session_start();
               }
               if(isset($_REQUEST['Registrarse']) && isset($_REQUEST['Acceso'])!='1' ) // viene del boton index registrarse
               {
-                 
                  $user=$_POST['usuario']; 
                  $pass=$_POST['password'];
                  $nombre=$_POST['nombre'];
