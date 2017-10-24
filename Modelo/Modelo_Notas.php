@@ -32,14 +32,6 @@ class Notas {
 		return $resultado;
 	}
 
-	/*function modificarNota($titulo,$descripcion,$creadornota){
-		$mysqli=$this->conexionBD();
-		UPDATE `nota` SET `id`=[value-1],`nombre`=[value-2],`contenido`=[value-3],`creador_nota`=[value-4] WHERE 1
-		$query="INSERT INTO `nota`( `nombre`, `contenido`, `creador_nota`) VALUES ('$titulo','$descripcion','$creadornota')";
-		$resultado=$mysqli->query($query);
-		$mysqli->close();
-		return $resultado;
-	}*/
 	function listarNotas($user){
 		$mysqli=$this->conexionBD();
 		$query="SELECT `id`, `nombre`, `contenido`, `creador_nota` FROM `nota` WHERE `creador_nota`='$user'";
@@ -49,11 +41,12 @@ class Notas {
 		return 'Error en la consulta sobre la base de datos';
 	}
     else{ // si la busqueda es correcta devolvemos el recordset resultado
-
+    	$filas=null;
     		while($fila = $resultado->fetch_array())
 				{
 					$filas[] = $fila;
 				}
+    	
 		return $filas;
 	}
 	}
@@ -84,7 +77,6 @@ class Notas {
 		return 'Error en la consulta sobre la base de datos';
 	}
     else{ // si la busqueda es correcta devolvemos el recordset resultado
-
 
     		while($fila = $resultado->fetch_array())
 				{
@@ -139,9 +131,62 @@ function listarUsuarios($usuarioSesion){
 	$mysqli->close();
 	return $form;
 }
+function listarNotasCompartidas($usuarioSesion){
+	$this->conexionBD();
+	$mysqli=$this->conexionBD();
+	$query="SELECT * FROM  `compartir` WHERE `alias_compartir`= '$usuarioSesion'";
+	if (!($resultado = $mysqli->query($query))){
+
+		return 'Error en la consulta sobre la base de datos';
+	}
+	else{ // si la busqueda es correcta devolvemos el recordset resultado
+
+    		while($fila = $resultado->fetch_array())
+				{
+					$filas[] = $fila;
+				}
+
+		return $filas;
+	}
+	 }
+	function notascompartidasUsuario($notascompartidas){
+
+		$file=fopen("../Archivos/notascompartidas.php", "w");
+		fwrite($file,"<?php class arrayNotas { function cargar(){". PHP_EOL);
+		fwrite($file,"\$notasarray=array(". PHP_EOL);
+
+		foreach($notascompartidas as $notacompartida)
+			{	
+				$id=$notacompartida['id_nota_compartir'];
+				$mysqli=$this->conexionBD();
+					$query="SELECT * FROM `nota` WHERE `id`=
+					'$id'";
+					$result=$mysqli->query($query);
+
+					if ($result->num_rows > 0){
+						$boolean=TRUE;
+						 while($fila = $result->fetch_assoc()){
+				if($boolean==TRUE){
+
+				$nombre=$fila['nombre'];
+				$contenido=$fila['contenido'];
+				fwrite($file,"array(\"nombre\"=>'$nombre',\"contenido\"=>'$contenido',". PHP_EOL);
+				$boolean=FALSE;
+				}
+				 fwrite($file,"),". PHP_EOL);
+				 }
+				
+			  }
+			  //mysqli_free_result($resultado);
+			  $result->close();
+			  $mysqli->close();
+			}
+			fwrite($file,");return \$notasarray;}}?>". PHP_EOL);
+			fclose($file);
+			
+			}
+				
 }
-
-
 
 
 

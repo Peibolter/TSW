@@ -32,7 +32,12 @@ $arrays=array(
 	"usuarioyacreado"=>"El usuario ya esta creado",
 	"volver"=>"Volver",
 	"nombrecompleto"=>"Nombre Completo",
-	"introduzcanombre"=>"Introduzca un Nombre"
+	"introduzcanombre"=>"Introduzca un Nombre",
+	"compartir"=>"Compartir",
+	"compartirNota"=>"Compartir Nota",
+	"listarNotas"=>"Listar Notas",
+	"login"=>"Acceso",
+	"registro"=>"Registrarse"
 	);
 
 return $arrays;
@@ -72,7 +77,12 @@ $arrays=array(
 	"usuarioyacreado"=>"User is already created",
 	"volver"=>"Back",
 	"nombrecompleto"=>"Complete Name",
-	"introduzcanombre"=>"Write a Name"
+	"introduzcanombre"=>"Write a Name",
+	"compartir"=>"Share",
+	"compartirNota"=>"Share Note",
+	"listarNotas"=>"Notes List",
+	"login"=>"Login",
+	"registro"=>"Register"
 	);
 
 return $arrays;

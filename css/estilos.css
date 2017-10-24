@@ -53,6 +53,8 @@ header .logo{
 }
 .cabecera{
 	line-height:140px;
+	position: fixed;
+
 }
 .form-compartirnotas{
 		/*float: left;*/
@@ -93,6 +95,7 @@ header nav a:hover{
 .dropdown {
     position: relative;
     display: inline-block;
+
 }
 
 .dropdown-content {
@@ -100,14 +103,15 @@ header nav a:hover{
     display: none;
     position: absolute;
     background-color: #252932;
-    min-width: 150px;
+    min-width: 120px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border-top: 1px solid #999; 
+    top: 100px;
 }
 
 .dropdown-content a {
-	width: 70px;
+	width: 50px;
     color: white;
     text-decoration: none;
     display: inline-block;
@@ -262,10 +266,16 @@ header .logo{
 }
 .cabecera{
 	line-height:100px;
-	position: fixed;
+	
 	top:0px;
 	right: 50px;
 }
+.dropdown-content {
+	top:80px;  
+}
+.dropdown-content a {
+width: 70px;
+  }
 .fotocabecera{
 	width: 170px;
 	margin-left: 40px;

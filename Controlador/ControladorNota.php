@@ -1,7 +1,6 @@
 <?php 
 
 include("../Modelo/Modelo_Notas.php");
-include("../Vistas/cabecera.php");
 include("../Vistas/listarnotas.php");
 include("../Vistas/modificarnota.php");
 include("../Vistas/crearnota.php");
@@ -48,13 +47,6 @@ include("../Vistas/compartirnota.php");
 				if($resultado==true)
 					{ 
 					header("location: ../Controlador/Controladorredireccionador.php?action=Modificarnota");
-				/*$datos=$modeloNota->listarNotas($_SESSION['usuario']);
-				//cargo idiomas
-                      $idioma=new idiomas();
-                          $idiom=comprobaridioma($idioma);
-
-				$claselistarnotas=new listadoNotas();
-				$claselistarnotas->cargar($datos,"exitomodificar",$idiom);*/
 					}else
 					{	
 						//cargo idiomas
@@ -78,24 +70,10 @@ include("../Vistas/compartirnota.php");
 					//cargo idiomas
 	                $idioma=new idiomas();
 	                $idiom=comprobaridioma($idioma);
-					//lanzamos la vista listar con las notas del usuario logeado mensaje error
 					$datos=$modeloNota->listarNotas($_SESSION['usuario']);
 					$claselistarnota=new listadoNotas();
 					$claselistarnota->cargar($datos,"errorborrar",$idiom);
 				}
-			}
-
-			if(isset($_REQUEST['ListarNota'])){
-
-				$modeloNota=new Notas();
-				echo $_SESSION['usuario'];
-				$datos=$modeloNota->listarNotas($_SESSION['usuario']);
-				//cargo idiomas
-                          $idioma=new idiomas();
-                          $idiom=comprobaridioma($idioma);
-
-				$claselistarnota=new listadoNotas();
-				$claselistarnota->cargar($datos,"",$idiom);
 			}
 			
 			function cargarModificarNota($id){
@@ -103,56 +81,45 @@ include("../Vistas/compartirnota.php");
 				//cargo idiomas
                 $idioma=new idiomas();
                 $idiom=comprobaridioma($idioma);
-                
-				
 				$modeloNota=new Notas();
 				$datos=$modeloNota->devolverlistaporid($id);
-				
 				$clasemodificarNota=new modificarNota();
 				$clasemodificarNota->cargar($datos,"",$idiom);
 				
 				 }
 
-				//Icono compartir de la nota
-          	if(isset($_REQUEST['CompartirNota']))
+				
+          	function cargarcompartiNota($idNota)
           	{ 	
           		//cargo idiomas
                 $idioma=new idiomas();
                 $idiom=comprobaridioma($idioma);
-
 	           	$modeloNota=new Notas();
-	            $datos=$modeloNota->listarUsuarios($_SESSION['usuario']);
-	            $idNota=$_REQUEST['CompartirNota'];	           
+	            $datos=$modeloNota->listarUsuarios($_SESSION['usuario']);         
 	            $clasecompartirnota=new compartirnota();
 	            $clasecompartirnota->cargar($datos,"",$idNota,$idiom);
          	}
-         	 //boton compartir nota con otros usuarios
-         	 //boton compartir nota con otros usuarios
-         	 if(isset($_REQUEST['altaCompartirNota']))
+         	
+         	function comprobarcompartirNota()
         	{          	  	
           	  	$alias=$_POST['alias'];
 				$id=$_POST['idNota'];
-				//cargo idiomas
                 $idioma=new idiomas();
                 $idiom=comprobaridioma($idioma);
 				foreach( $alias as $key => $n ) {
 				$modeloNota=new Notas(); 
 				$resultado=$modeloNota->AltaCompartirNota($n,$id);
 				  } 
-
 				if($resultado==true)
 					{ 
-					$modeloNota=new Notas();
-					$datos=$modeloNota->listarNotas($_SESSION['usuario']);				
-					$claselistarnotas=new listadoNotas();
-					$claselistarnotas->cargar($datos,"exitocompartir",$idiom);
+						header("location: Controladorredireccionador.php?action=comprobarcompartir");
 					}else
 					{
 					$modeloNota=new Notas();
-					$datos=$modeloNota->listarNotas($_SESSION['usuario']);				
-					$claselistarnotas=new listadoNotas();
-					$claselistarnotas->cargar($datos,"errorcompartir",$idiom);
-					}				
+					$datos=$modeloNota->listarUsuarios($_SESSION['usuario']);
+					$claselistarnotas=new compartirnota();
+					$claselistarnotas->cargar($datos,"errorcompartir",$id,$idiom);
+					}			
             }
 
 			

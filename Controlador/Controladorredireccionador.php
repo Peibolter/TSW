@@ -18,8 +18,7 @@
 		   			cargoAcceso();
 		   			break;
 		   		case 'dentro':     	//cargo la vista principal porque me lo pide el controlador.php
-		   		echo $_SESSION['usuario'];
-					cargadoPrincipal(""); 
+					cargarListaNotas(""); 
 					break;
 				case 'registro':	//boton login.php de registrar
 						cargarRegistro();
@@ -55,15 +54,20 @@
 		   		case 'exitocrearnota':		//lanzamos la vista listarnota despues de crear nota
 		   			cargarListaNotas("exito");
 		   			break;
-		   		case 'Eliminar':		//boton ppelera.
-		   			echo "dentro";
+		   		case 'Eliminar':		//boton papelera.
 		   			cargarListaNotas("exitoborrar");
 		   			break;
-		   		case 'Modificarnota':
+		   		case 'Modificarnota':	//viene del controlador cargando la lista con exito
 		   		cargarListaNotas("exitomodificar");
 		   			break;
-		   		case 'comprobarnota':
+		   		case 'comprobarnota':		//boton modificar de la vista 
 		   		comprobarmodificar();
+		   		break;
+		   		case 'compartirNota':		//boton de la vista compartirnota.php
+		   		comprobarcompartirNota();
+		   		break;
+		   		case 'comprobarcompartir':		//viene del controlador para cargar la lista con mensaje exito.
+		   		cargarListaNotas("exitocompartir");
 		   		break;
 		   		case 'Salir':		//boton Salir
 		   			session_destroy();
@@ -82,30 +86,25 @@
    	if (isset($_REQUEST['modificar'])){
 			cargarModificarNota($_REQUEST['modificar']);
 		}
+	if (isset($_REQUEST['compartirnota'])){
+			cargarcompartiNota($_REQUEST['compartirnota']);
+		}
 
-
-
-
-		   	function cargadoPrincipal($texto)
-		   			{			
-			   				//cargo idiomas
-			                   $idioma=new idiomas();
-			                   $idiom=comprobaridioma($idioma);
-
-		                       $modeloNota=new Notas();
-		                       $datos=$modeloNota->listarNotas($_SESSION['usuario']);
-		                       $claselistadoNotas=new listadoNotas();
-		                       $claselistadoNotas->cargar($datos,$texto,$idiom);
-		   			}
 			function cargarListaNotas($texto){
-                    //cargo el idioma
-                     $idioma=new idiomas();
-                     $idiom=comprobaridioma($idioma);
-                     //cargo el array de notas
-                      $modeloNota=new Notas();
-                      $datos=$modeloNota->listarNotas($_SESSION['usuario']);
+                   //cargo el idioma
+                    $idioma=new idiomas();
+                    $idiom=comprobaridioma($idioma);
+             //cargo el array de notas
+             $modeloNota=new Notas();
+             $datos=$modeloNota->listarNotas($_SESSION['usuario']);
+
+     		//$notascompartidas=$modeloNota->listarNotasCompartidas($_SESSION['usuario']);
+
+            //$modeloNota->notascompartidasUsuario($notascompartidas);
+     					
                        //cargo la vista
                       $claselistadoNotas=new listadoNotas();
-                      $claselistadoNotas->cargar($datos,$texto,$idiom);
+                      $claselistadoNotas->cargar($datos,$texto,$idiom,null);
                }
+
 ?>
