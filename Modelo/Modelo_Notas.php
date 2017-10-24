@@ -6,7 +6,7 @@ class Notas {
 	private $titulo;
 	private $descripcion;
 
-
+	
 	//constructor
 	function constructor($titulo,$descripcion)
 	{
@@ -106,7 +106,42 @@ class Notas {
 		return $resultado;
 	}
 	}
+
+function AltaCompartirNota($alias,$id){
+	$mysqli=$this->conexionBD();
+	$query="INSERT INTO `compartir`( `alias_compartir`, `id_nota_compartir`) VALUES ('$alias','$id')";
+	$resultado=$mysqli->query($query);
+	$mysqli->close();
+	return $resultado;
 }
+
+//Lista los nombres de los usuarios menos el de la sesion abierta
+function listarUsuarios($usuarioSesion){
+
+	$this->conexionBD();
+	$mysqli=$this->conexionBD();
+
+	$form=array();
+	$query="SELECT * FROM usuario WHERE `alias`!= '$usuarioSesion'";		
+	$resultado=$mysqli->query($query);
+	while($fila = $resultado->fetch_array())
+	{
+		$filas[] = $fila;
+	}
+	foreach($filas as $fila)
+	{
+		$alias=$fila['alias'];		
+
+		$fila_array=array("alias"=>$alias);
+		array_push($form,$fila_array);
+	}
+	$resultado->free();
+	$mysqli->close();
+	return $form;
+}
+}
+
+
 
 
 

@@ -2,7 +2,7 @@
 <?php 
 
 	 class login{ 
- 	function cargar($texto){ 
+ 	function cargar($texto,$idi){ 
  	
 ?>
 <!DOCTYPE html>
@@ -19,7 +19,6 @@
 
 <body>
 		
-		
 
 <div class="container well" id="sha"> 
 
@@ -27,26 +26,29 @@
  		<div class="col-xs-12"> 
 			<img src="..\img\avatar.png" class="img-responsive" id="avatar">
  		</div>
-	</div>
-
-		<form class="login" method="post" action="Controlador.php?Acceso='1'">
-		
+	</div>	
+	<div class="idiomas">
+			<a href="../Controlador/Controladorredireccionador.php?action=español"><input type="image" src="..\img\iconoespanol.png" width="30" /></a>
+			 <a href="../Controlador/Controladorredireccionador.php?action=ingles"><input type="image" src="../img/iconoingles.jpeg" width="30" /></a>
+			 </div>
+		<form class="login" method="post" action="Controladorredireccionador.php?action=comprobarUsuario">
+			 
 		<div class="form-group"> 
-			<label for="usuario">Usuario:</label>
-			<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Introduzca Usuario" maxlength="50" required  onblur="comprobarloginpassword(this);">
+			<label for="usuario"><?= $idi["usuario"] ?></label>
+			<input type="text" class="form-control" id="usuario" name="usuario" placeholder="<?= $idi["introduceusuario"] ?>" maxlength="50" required  onblur="comprobarloginpassword(this);">
 			<p id="usuarioparrafo"></p>
 		</div>
 
 		<div class="form-group">
-			<label for="password">Contraseña:</label>
-			<input type="password" class="form-control" name="password" placeholder="Introduzca una contraseña" id="password" maxlength="25" required onblur="comprobarloginpassword(this);">
+			<label for="password"><?= $idi["contraseña"] ?></label>
+			<input type="password" class="form-control" name="password" placeholder="<?= $idi["introducepass"] ?>" id="password" maxlength="25" required onblur="comprobarloginpassword(this);">
 			<p id="passwordparrafo"></p>
 		</div>
 		<div class="checkbox">
-		<p class="exito"> <?php if($texto=="UsuarioCreadoconExito") echo "El usuario se ha creado con éxito";?> </p>
-		<p class="errores"> <?php if($texto=="Usuarioincorrecto") echo "Usuario o Contraseña incorrectos"; ?> </p>
-		<input type="submit" class="btn btn-primary" name="login"  value="Entrar"/>
-		<a href="../Controlador/Controlador.php?Registro"><input type="button" class="btn btn-primary" name="Registrarse"  value="Registrarse"/> </a>
+		<p class="exito"> <?php if($texto=="UsuarioCreadoconExito") echo $idi["usuariocredoexito"];?> </p>
+		<p class="errores"> <?php if($texto=="Usuarioincorrecto") echo $idi["usuarioerror"]; ?> </p>
+		<input type="submit" class="btn btn-primary" name="login"  value=<?= $idi["entrar"]; ?> />
+		<a href="Controladorredireccionador.php?action=registro"><input type="button" class="btn btn-primary" name="Registrarse"  value="<?= $idi["registrarse"]; ?>" /> </a>
 		</form>
 
 		

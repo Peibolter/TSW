@@ -1,7 +1,7 @@
 <?php
 class crearnota{
 
-		function cargar($texto){
+		function cargar($texto,$idi){
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +13,7 @@ class crearnota{
 			<link rel="stylesheet" href="../css/estilos.css">
 			<!--<link rel="stylesheet" href="../css/bootstrap.min.css">-->
 			<link href="https://fonts.googleapis.com/css?family=Amatica+SC" rel="stylesheet">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><!--libreia para iconos de google-->
 			<script type="js/jquery.js"></script>
 		<script type="js/bootstrap.min.js"></script>
 		</head>
@@ -26,27 +27,34 @@ class crearnota{
 				</a>
 				</div>
 				<nav class="cabecera">
-				<a href="../Controlador/ControladorNota.php?CrearNota">Crear Nota</a>
-				<a href="../Controlador/ControladorNota.php?ListarNota">Notas</a>
-				<a href="#">Salir </a>
+				<div class="dropdown">
+				  <a href="#"><i class="material-icons">map</i><?= $idi["Idiomas"] ?></a>
+				  <div class="dropdown-content">
+				    <a href="../Controlador/Controladorredireccionador.php?action=españollogeado"><?= $idi["Español"] ?></a>
+				    <a href="../Controlador/Controladorredireccionador.php?action=ingleslogeado"><?= $idi["Inglés"] ?></a>
+				  </div>
+				</div>
+				<a href="../Controlador/Controladorredireccionador.php?action=btnCrearNota"><?= $idi["crearnota"] ?></a>
+				<a href="../Controlador/Controladorredireccionador.php?action=logeado"><?= $idi["Notas"] ?></a>
+				<a href="../Controlador/Controladorredireccionador.php?action=Salir"><?= $idi["Salir"] ?> </a>
 				</nav>
 			</div>
 		</header>	
 		<section class="main">
 			
-    		<form class="altaform" action="../Controlador/ControladorNota.php?AltaNota" method="post">
+    		<form class="altaform" action="../Controlador/Controladorredireccionador.php?action=btnAltaNota" method="post">
 
     			<fieldset>
 
-    			<legend align="left">Crear Nota</legend>
+    			<legend align="left"><?= $idi["crearnota"] ?></legend>
 			  			<div class="contenedorcrearnota">
-			    			<p><a>Titulo </a><input class="crear" name="titulo" type="text" placeholder="Introduzca Titulo" required></p>
+			    			<p><a><?= $idi["Titulo"] ?> </a><input class="crear" name="titulo" type="text" placeholder="<?= $idi["Introduzcatitulo"] ?>" required></p>
 			  		
-						 <textarea name="descripcion" required maxlength="200" class="form-control" id="exampleTextarea" rows="6" cols="26" placeholder="Escribe tus notas"></textarea>
+						 <textarea name="descripcion" required maxlength="200" class="form-control" id="exampleTextarea" rows="6" cols="26" placeholder="<?= $idi["EscribeNota"] ?>" ></textarea>
 						 <br>
-						  <input  type="submit" value="Guardar">
+						  <input  type="submit" value=<?= $idi["Guardar"] ?>>
 						  </div>
-						  <p class="errorinsertado"><?php if($texto=="error")echo"Imposible Añadir nota";?> </p>
+						  <p class="errorinsertado"><?php if($texto=="error")echo $idi["errorCrear"];?> </p>
 						  <!--<p class="exito"><?php //if($texto=="exito")echo"Nota Creada";?> </p>-->
     			</fieldset>
     		</section>

@@ -54,6 +54,13 @@ header .logo{
 .cabecera{
 	line-height:140px;
 }
+.form-compartirnotas{
+		/*float: left;*/
+		display: inline-block;
+		color:#ffffff;
+		font-size:20px;
+		font-family: 'Amatica SC', cursive;
+}
 header nav a {
 	display:inline-block;
 	color:#fff;
@@ -73,6 +80,50 @@ header nav a:hover{
 	background: #f56f3a;
 	border-radius:50px;
 }
+.dropbtn {
+    background-color: #252932;
+    color: white;
+    padding: 16px;
+    font-size: 25px;
+    border: none;
+    font-family: 'Amatica SC', cursive,bold;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+	
+    display: none;
+    position: absolute;
+    background-color: #252932;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-top: 1px solid #999; 
+}
+
+.dropdown-content a {
+	width: 70px;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    
+}
+
+.dropdown-content a:hover {background-color: #f56f3a}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #252932;
+}
+
 
 section{
 	text-align: center;
@@ -150,6 +201,11 @@ p{
 .container{
 	width: 250px;
 	word-wrap:break-word;
+}
+input.compartirCheck{
+	width: 20px;
+/*	margin: 20px;*/
+	font-family: 'Shadows Into Light', cursive;
 }
 input{
 	width: 200px;
