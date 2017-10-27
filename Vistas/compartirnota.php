@@ -15,25 +15,32 @@ class compartirnota{
 			  		<input type="hidden" name="idNota" value="<?php echo $idNota; ?>" />		
 			  		 			
 			  		<?php 
-			  			if($datos!=null){ 
+			  		if($datos!=null){ 
+
 			  		foreach($datos as $fila)
 					{  ?>
 					
 					<div class="checkbox">
 						
-						<input type="checkbox" class="compartirCheck" name="alias[]" value="<?= $fila['alias'];?>" id="checkbox">  <?=$fila['alias'];?>  
+						<label><input type="checkbox" class="compartirCheck" name="alias[]" value="<?= $fila;?>" id="checkbox"><p class="alias"><?=$fila;?></p></label>
+
 						
 					</div>
 				
-					<?php  }}?>						 
+					<?php  } ?>	
 					<input  type="submit" value="<?=$idi['compartir']; ?>">
+										 
+					
 					
 
     			</fieldset>
     		</form>
-    		
+			<?php }else if ($datos==null){ ?>	
+				<p><?=$idi['nousers'];?></p>					 
+			<?php  } ?>	
     					
     	</section>
+    
 
     		</body>
 

@@ -1,5 +1,5 @@
 <?php class arrayNotas { function cargar(){
 $notasarray=array(
-array("nombre"=>'Compra',"contenido"=>'lechuga,tomates,patatas',
+array("nombre"=>'hola',"contenido"=>'juan',
 ),
 );return $notasarray;}}?>

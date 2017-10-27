@@ -185,7 +185,6 @@ p{
 
 .a-lista{
 	border-bottom: 1px solid #999; 
-	padding-left: 20px;
 }
 
 .form-listarnotas{
@@ -208,8 +207,16 @@ p{
 }
 input.compartirCheck{
 	width: 20px;
-/*	margin: 20px;*/
-	font-family: 'Shadows Into Light', cursive;
+ display: inline-block; 
+ font-family: 'Shadows Into Light', cursive;
+}
+div.checkbox{
+ width: 100%;
+}
+p.alias{
+ width: 80px;
+ display: inline-block;
+ font-family: 'Shadows Into Light', cursive;
 }
 input{
 	width: 200px;

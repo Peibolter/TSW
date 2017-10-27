@@ -98,13 +98,15 @@
              $modeloNota=new Notas();
              $datos=$modeloNota->listarNotas($_SESSION['usuario']);
 
-     		//$notascompartidas=$modeloNota->listarNotasCompartidas($_SESSION['usuario']);
+     		$notascompartidas=$modeloNota->listarNotasCompartidas($_SESSION['usuario']);
+            $modeloNota->notascompartidasUsuario($notascompartidas);
 
-            //$modeloNota->notascompartidasUsuario($notascompartidas);
-     					
+     		include("../Archivos/notascompartidas.php");//cargo el array creado a partir de la funcion anterior.
+     		$notas=new arrayNotas();			//creo la clase del array
+     		$arrayNotas=$notas->cargar();		
                        //cargo la vista
                       $claselistadoNotas=new listadoNotas();
-                      $claselistadoNotas->cargar($datos,$texto,$idiom,null);
+                      $claselistadoNotas->cargar($datos,$texto,$idiom,$arrayNotas);
                }
 
 ?>

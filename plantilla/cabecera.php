@@ -23,7 +23,7 @@ class cabecera{
 		<header class="header2" >
 			<div class="wrapper">
 				<div class="logo">
-				<a href="../Controlador/ControladorNota.php?Principal" class="thumb pull-left">
+				<a href="../Controlador/Controladorredireccionador.php?action=logeado" class="thumb pull-left">
 				<img  class="fotocabecera" src="../img/logoDayNote.PNG" alt="" >
 				</a>
 				</div>

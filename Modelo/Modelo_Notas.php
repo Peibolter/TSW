@@ -131,7 +131,30 @@ function listarUsuarios($usuarioSesion){
 	$mysqli->close();
 	return $form;
 }
+//Lista los usuarios con la nota actual ya compartida
+function listarUsuariosYACompartidos($idNota){
+	$this->conexionBD();
+	$mysqli=$this->conexionBD();
+
+	$form=array();
+	$query="SELECT `alias_compartir` as 'alias' FROM compartir WHERE `id_nota_compartir` = '$idNota'";
+	$resultado=$mysqli->query($query);	
+	if ($resultado->num_rows > 0){
+
+		while($fila = $resultado->fetch_array())
+				{
+					$filas[] = $fila;
+				}
+		return $filas;
+		
+	}
+    else{ 
+
+    	return null;
+	}
+}
 function listarNotasCompartidas($usuarioSesion){
+	$filas=null;
 	$this->conexionBD();
 	$mysqli=$this->conexionBD();
 	$query="SELECT * FROM  `compartir` WHERE `alias_compartir`= '$usuarioSesion'";
@@ -154,6 +177,8 @@ function listarNotasCompartidas($usuarioSesion){
 		$file=fopen("../Archivos/notascompartidas.php", "w");
 		fwrite($file,"<?php class arrayNotas { function cargar(){". PHP_EOL);
 		fwrite($file,"\$notasarray=array(". PHP_EOL);
+		if($notascompartidas!=null){
+
 
 		foreach($notascompartidas as $notacompartida)
 			{	
@@ -180,7 +205,7 @@ function listarNotasCompartidas($usuarioSesion){
 			  //mysqli_free_result($resultado);
 			  $result->close();
 			  $mysqli->close();
-			}
+			}}
 			fwrite($file,");return \$notasarray;}}?>". PHP_EOL);
 			fclose($file);
 			

@@ -37,7 +37,10 @@ $arrays=array(
 	"compartirNota"=>"Compartir Nota",
 	"listarNotas"=>"Listar Notas",
 	"login"=>"Acceso",
-	"registro"=>"Registrarse"
+	"registro"=>"Registrarse",
+	"nousers"=>"Nadie a quien compartir",
+	"nohaynotas"=>"No hay Notas creadas ni compartidas",
+	"Notacompartida"=>"Nota Compartida"
 	);
 
 return $arrays;
@@ -82,7 +85,10 @@ $arrays=array(
 	"compartirNota"=>"Share Note",
 	"listarNotas"=>"Notes List",
 	"login"=>"Login",
-	"registro"=>"Register"
+	"registro"=>"Register",
+	"nousers"=>"No users to share",
+	"nohaynotas"=>"There arent Notes created and shared",
+	"Notacompartida"=>"Shared Note"
 	);
 
 return $arrays;

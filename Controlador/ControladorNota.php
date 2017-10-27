@@ -89,38 +89,65 @@ include("../Vistas/compartirnota.php");
 				 }
 
 				
-          	function cargarcompartiNota($idNota)
-          	{ 	
-          		//cargo idiomas
-                $idioma=new idiomas();
-                $idiom=comprobaridioma($idioma);
-	           	$modeloNota=new Notas();
-	            $datos=$modeloNota->listarUsuarios($_SESSION['usuario']);         
-	            $clasecompartirnota=new compartirnota();
-	            $clasecompartirnota->cargar($datos,"",$idNota,$idiom);
-         	}
+          	//lista los usuarios a los que se puede compartir la nota	
+			function cargarcompartiNota($idNota)
+			{ 	
+					//cargo idiomas
+				$idioma=new idiomas();
+				$idiom=comprobaridioma($idioma);
+				$modeloNota=new Notas();
+				$usuariosSinSesion=$modeloNota->listarUsuarios($_SESSION['usuario']);
+				$usuariosYaCompartidos=$modeloNota->listarUsuariosYACompartidos($idNota);          
+
+				//lista los usuarios menos los que ya tienen esa nota compartida
+				if(($usuariosYaCompartidos)!=null){
+				 	foreach($usuariosSinSesion as $aV){
+						    $aTmp1[] = $aV['alias'];
+					}
+
+					foreach($usuariosYaCompartidos as $aV){
+					    $aTmp2[] = $aV['alias'];
+					}
+					//devuelve los elementos diferentes de los arrays	 
+					$new_array = array_diff($aTmp1,$aTmp2);
+					   //reinicia los indices del array	   			
+					$reindex=array_values($new_array); 				
+
+					$clasecompartirnota=new compartirnota();
+					$clasecompartirnota->cargar($reindex,"",$idNota,$idiom);
+				}else{//lista todos los usuarios del sistema menos el de la sesion
+					$clasecompartirnota=new compartirnota();
+					foreach($usuariosSinSesion as $aV){
+						    $aTmp1[] = $aV['alias'];
+					}
+					$clasecompartirnota->cargar($aTmp1,"",$idNota,$idiom);
+				}         	
+			}
+       
+			
+
          	
-         	function comprobarcompartirNota()
-        	{          	  	
-          	  	$alias=$_POST['alias'];
+         	//Hace el alta de la id de la nota y el alias del usuario en la tabla compartir	
+			function comprobarcompartirNota() {  
+				  	
+				$alias=$_POST['alias'];
 				$id=$_POST['idNota'];
-                $idioma=new idiomas();
-                $idiom=comprobaridioma($idioma);
+				$idioma=new idiomas();
+				$idiom=comprobaridioma($idioma);
 				foreach( $alias as $key => $n ) {
 				$modeloNota=new Notas(); 
 				$resultado=$modeloNota->AltaCompartirNota($n,$id);
-				  } 
+				} 
 				if($resultado==true)
 					{ 
 						header("location: Controladorredireccionador.php?action=comprobarcompartir");
-					}else
-					{
+				}else{
 					$modeloNota=new Notas();
 					$datos=$modeloNota->listarUsuarios($_SESSION['usuario']);
 					$claselistarnotas=new compartirnota();
 					$claselistarnotas->cargar($datos,"errorcompartir",$id,$idiom);
-					}			
-            }
+				}			
+			}
 
 			
 
