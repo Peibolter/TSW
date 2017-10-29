@@ -98,7 +98,7 @@ include("../Vistas/compartirnota.php");
 				$modeloNota=new Notas();
 				$usuariosSinSesion=$modeloNota->listarUsuarios($_SESSION['usuario']);
 				$usuariosYaCompartidos=$modeloNota->listarUsuariosYACompartidos($idNota);          
-
+				
 				//lista los usuarios menos los que ya tienen esa nota compartida
 				if(($usuariosYaCompartidos)!=null){
 				 	foreach($usuariosSinSesion as $aV){
@@ -121,7 +121,7 @@ include("../Vistas/compartirnota.php");
 						    $aTmp1[] = $aV['alias'];
 					}
 					$clasecompartirnota->cargar($aTmp1,"",$idNota,$idiom);
-				}         	
+				}       	
 			}
        
 			

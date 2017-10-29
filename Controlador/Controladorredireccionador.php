@@ -100,7 +100,6 @@
 
      		$notascompartidas=$modeloNota->listarNotasCompartidas($_SESSION['usuario']);
             $modeloNota->notascompartidasUsuario($notascompartidas);
-
      		include("../Archivos/notascompartidas.php");//cargo el array creado a partir de la funcion anterior.
      		$notas=new arrayNotas();			//creo la clase del array
      		$arrayNotas=$notas->cargar();		

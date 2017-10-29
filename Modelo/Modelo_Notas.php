@@ -112,21 +112,24 @@ function listarUsuarios($usuarioSesion){
 
 	$this->conexionBD();
 	$mysqli=$this->conexionBD();
-
+	$filas=null;
 	$form=array();
 	$query="SELECT * FROM usuario WHERE `alias`!= '$usuarioSesion'";		
 	$resultado=$mysqli->query($query);
+
 	while($fila = $resultado->fetch_array())
 	{
 		$filas[] = $fila;
 	}
+
+	if($fila!=null){  
 	foreach($filas as $fila)
 	{
 		$alias=$fila['alias'];		
 
 		$fila_array=array("alias"=>$alias);
 		array_push($form,$fila_array);
-	}
+	}}
 	$resultado->free();
 	$mysqli->close();
 	return $form;
@@ -177,8 +180,8 @@ function listarNotasCompartidas($usuarioSesion){
 		$file=fopen("../Archivos/notascompartidas.php", "w");
 		fwrite($file,"<?php class arrayNotas { function cargar(){". PHP_EOL);
 		fwrite($file,"\$notasarray=array(". PHP_EOL);
-		if($notascompartidas!=null){
 
+		if($notascompartidas!=null){
 
 		foreach($notascompartidas as $notacompartida)
 			{	
@@ -205,10 +208,10 @@ function listarNotasCompartidas($usuarioSesion){
 			  //mysqli_free_result($resultado);
 			  $result->close();
 			  $mysqli->close();
-			}}
-			fwrite($file,");return \$notasarray;}}?>". PHP_EOL);
-			fclose($file);
+			}
 			
+			}fwrite($file,");return \$notasarray;}}?>". PHP_EOL);
+			fclose($file);
 			}
 				
 }
