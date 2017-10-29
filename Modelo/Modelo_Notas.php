@@ -122,7 +122,7 @@ function listarUsuarios($usuarioSesion){
 		$filas[] = $fila;
 	}
 
-	if($fila!=null){  
+	if($filas!=null){  
 	foreach($filas as $fila)
 	{
 		$alias=$fila['alias'];		
